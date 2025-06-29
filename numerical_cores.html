@@ -1,6 +1,14 @@
+<form id="basic_form">
+  <input name="first" type="number" />
+  <input name="second" type="number" />
+  <input name="third" type="number" />
+  <input name="fourth" type="number" />
+  <input type="submit" value="Calculate" />
+</form>
+
 <script>
   document
-    .getElementsByClassName("basic_core")[0]
+    .getElementsById("basic_form")
     .addEventListener("submit", function (e) {
       e.preventDefault();
       const data = new FormData(event.target);
@@ -9,10 +17,3 @@
       console.log(values);
     });
 </script>
-<form class="basic_core">
-  <input name="first" type="number" />
-  <input name="second" type="number" />
-  <input name="third" type="number" />
-  <input name="fourth" type="number" />
-  <input type="submit" value="Calculate" />
-</form>
