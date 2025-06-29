@@ -2,9 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Numeric Core Tools</title>
   </head>
 
@@ -14,14 +12,13 @@
       <input name="second" type="number" />
       <input name="third" type="number" />
       <input name="fourth" type="number" />
+      <input type="submit" value="Calculate" />
     </form>
-    <input type="submit" value="Calculate" />
-    <div id="core_result"></div>
     <form id="word_core">
       <input name="word" type="text" />
+      <input type="submit" value="Calculate" />
     </form>
-    <input type="submit" value="Calculate" />
-    <div id="word_result"></div>
+    <div id="result"></div>
     <script>
       function numeric_core(values) {
         const v = values.map(Number);
@@ -53,12 +50,12 @@
           const coreValues = numeric_core(letter_values.slice(0, 4));
           console.log(coreValues);
           if (coreValues.length > 0) {
-            document.getElementById("word_result").innerText = coreValues[0];
+            document.getElementById("result").innerText = coreValues[0];
           } else {
-            document.getElementById("word_result").innerText =
-              "Could not find core";
+            document.getElementById("result").innerText = "Could not find core";
           }
         });
+
       // Basic form
       document
         .getElementById("basic_form")
@@ -75,10 +72,9 @@
           const coreValues = numeric_core(values);
           console.log(coreValues);
           if (coreValues.length > 0) {
-            document.getElementById("core_result").innerText = coreValues[0];
+            document.getElementById("result").innerText = coreValues[0];
           } else {
-            document.getElementById("core_result").innerText =
-              "Could not find core";
+            document.getElementById("result").innerText = "Could not find core";
           }
         });
     </script>
