@@ -50,7 +50,7 @@
           const letter_values = letters.map(
             (l) => l.toLowerCase().charCodeAt(0) - 97 + 1,
           );
-          const coreValues = numeric_core(values.slice(0, 4));
+          const coreValues = numeric_core(letter_values.slice(0, 4));
           if (coreValues.length > 0) {
             document.getElementById("word_result").innerText = coreValues[0];
           } else {
