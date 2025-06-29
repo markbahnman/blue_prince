@@ -1,46 +1,59 @@
-<form id="basic_form">
-  <input name="first" type="number" />
-  <input name="second" type="number" />
-  <input name="third" type="number" />
-  <input name="fourth" type="number" />
-  <input type="submit" value="Calculate" />
-</form>
-<div id="result"></div>
-<script>
-  function numeric_core(values) {
-    const v = values.map(Number);
-    const possibilities = [
-      ((v[0] - v[1]) * v[2]) / v[3],
-      ((v[0] - v[1]) / v[2]) * v[3],
-      (v[0] * v[1] - v[2]) / v[3],
-      (v[0] * v[1]) / v[2] - v[3],
-      (v[0] / v[1]) * v[2] - v[3],
-      (v[0] / v[1] - v[2]) * v[3],
-    ];
-    const core = possibilities
-      .filter(Number.isInteger)
-      .filter((n) => n > 0)
-      .sort((a, b) => b < a);
-    return core;
-  }
-  document
-    .getElementById("basic_form")
-    .addEventListener("submit", function (e) {
-      e.preventDefault();
-      const data = new FormData(event.target);
-      const dataObject = Object.fromEntries(data.entries());
-      console.log(dataObject);
-      const values = [
-        dataObject["first"],
-        dataObject["second"],
-        dataObject["third"],
-        dataObject["fourth"],
-      ];
-      const coreValues = numeric_core(values);
-      if (coreValues.length > 0) {
-        document.getElementById("result").innerText = coreValues[0];
-      } else {
-        document.getElementById("result").innerText = "Could not find core";
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Numeric Core Tools</title>
+  </head>
+
+  <body>
+    <form id="basic_form">
+      <input name="first" type="number" />
+      <input name="second" type="number" />
+      <input name="third" type="number" />
+      <input name="fourth" type="number" />
+      <input type="submit" value="Calculate" />
+    </form>
+    <div id="result"></div>
+    <script>
+      function numeric_core(values) {
+        const v = values.map(Number);
+        const possibilities = [
+          ((v[0] - v[1]) * v[2]) / v[3],
+          ((v[0] - v[1]) / v[2]) * v[3],
+          (v[0] * v[1] - v[2]) / v[3],
+          (v[0] * v[1]) / v[2] - v[3],
+          (v[0] / v[1]) * v[2] - v[3],
+          (v[0] / v[1] - v[2]) * v[3],
+        ];
+        const core = possibilities
+          .filter(Number.isInteger)
+          .filter((n) => n > 0)
+          .sort((a, b) => b < a);
+        return core;
       }
-    });
-</script>
+      document
+        .getElementById("basic_form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const data = new FormData(event.target);
+          const dataObject = Object.fromEntries(data.entries());
+          console.log(dataObject);
+          const values = [
+            dataObject["first"],
+            dataObject["second"],
+            dataObject["third"],
+            dataObject["fourth"],
+          ];
+          const coreValues = numeric_core(values);
+          if (coreValues.length > 0) {
+            document.getElementById("result").innerText = coreValues[0];
+          } else {
+            document.getElementById("result").innerText = "Could not find core";
+          }
+        });
+    </script>
+  </body>
+</html>
