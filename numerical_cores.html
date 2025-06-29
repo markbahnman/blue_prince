@@ -47,7 +47,7 @@
           const data = new FormData(event.target);
           const dataObject = Object.fromEntries(data.entries());
           const letters = dataObject["word"].trim().split("");
-          const letter_values = letter.map(
+          const letter_values = letters.map(
             (l) => l.toLowerCase().charCodeAt(0) - 97 + 1,
           );
           const coreValues = numeric_core(values.slice(0, 4));
