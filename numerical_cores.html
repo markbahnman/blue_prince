@@ -14,9 +14,14 @@
       <input name="second" type="number" />
       <input name="third" type="number" />
       <input name="fourth" type="number" />
-      <input type="submit" value="Calculate" />
     </form>
-    <div id="result"></div>
+    <input type="submit" value="Calculate" />
+    <div id="core_result"></div>
+    <form id="word_core">
+      <input name="word" type="text" />
+    </form>
+    <input type="submit" value="Calculate" />
+    <div id="word_result"></div>
     <script>
       function numeric_core(values) {
         const v = values.map(Number);
@@ -34,13 +39,32 @@
           .sort((a, b) => b < a);
         return core;
       }
+      // 4 letter word
+      document
+        .getElementById("word_core")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const data = new FormData(event.target);
+          const dataObject = Object.fromEntries(data.entries());
+          const letters = dataObject["word"].trim().split("");
+          const letter_values = letter.map(
+            (l) => l.toLowerCase().charCodeAt(0) - 97 + 1,
+          );
+          const coreValues = numeric_core(values.slice(0, 4));
+          if (coreValues.length > 0) {
+            document.getElementById("word_result").innerText = coreValues[0];
+          } else {
+            document.getElementById("word_result").innerText =
+              "Could not find core";
+          }
+        });
+      // Basic form
       document
         .getElementById("basic_form")
         .addEventListener("submit", function (e) {
           e.preventDefault();
           const data = new FormData(event.target);
           const dataObject = Object.fromEntries(data.entries());
-          console.log(dataObject);
           const values = [
             dataObject["first"],
             dataObject["second"],
@@ -49,9 +73,10 @@
           ];
           const coreValues = numeric_core(values);
           if (coreValues.length > 0) {
-            document.getElementById("result").innerText = coreValues[0];
+            document.getElementById("core_result").innerText = coreValues[0];
           } else {
-            document.getElementById("result").innerText = "Could not find core";
+            document.getElementById("core_result").innerText =
+              "Could not find core";
           }
         });
     </script>
