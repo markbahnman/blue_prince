@@ -13,7 +13,13 @@
       e.preventDefault();
       const data = new FormData(event.target);
       const dataObject = Object.fromEntries(data.entries());
-      const values = dataObject.map((v, _k) => v);
+      console.log(dataObject);
+      const values = [
+        dataObject["first"],
+        dataObject["second"],
+        dataObject["third"],
+        dataObject["fourth"],
+      ];
       console.log(values);
     });
 </script>
