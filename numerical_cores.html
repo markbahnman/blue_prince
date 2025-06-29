@@ -1,0 +1,15 @@
+<script>
+  document
+    .getElementsByClassName(".basic_core")[0]
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+      console.log(e);
+    });
+</script>
+<form class="basic_core">
+  <input id="first" type="number" />
+  <input id="second" type="number" />
+  <input id="third" type="number" />
+  <input id="fourth" type="number" />
+  <input type="sbumit" value="Calculate" />
+</form>
