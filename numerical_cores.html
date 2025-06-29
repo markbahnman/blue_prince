@@ -1,15 +1,18 @@
 <script>
   document
-    .getElementsByClassName(".basic_core")[0]
+    .getElementsByClassName("basic_core")[0]
     .addEventListener("submit", function (e) {
-      e.preventDefault();
-      console.log(e);
+        e.preventDefault();
+        const data = new FormData(event.target):
+        const do = Object.fromEntries(data.entries());
+        const values = do.map((v, _k) => v);
+        console.log(values);
     });
 </script>
 <form class="basic_core">
-  <input id="first" type="number" />
-  <input id="second" type="number" />
-  <input id="third" type="number" />
-  <input id="fourth" type="number" />
-  <input type="sbumit" value="Calculate" />
+  <input name="first" type="number" />
+  <input name="second" type="number" />
+  <input name="third" type="number" />
+  <input name="fourth" type="number" />
+  <input type="submit" value="Calculate" />
 </form>
