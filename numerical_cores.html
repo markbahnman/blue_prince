@@ -51,6 +51,7 @@
             (l) => l.toLowerCase().charCodeAt(0) - 97 + 1,
           );
           const coreValues = numeric_core(letter_values.slice(0, 4));
+          console.log(coreValues);
           if (coreValues.length > 0) {
             document.getElementById("word_result").innerText = coreValues[0];
           } else {
@@ -72,6 +73,7 @@
             dataObject["fourth"],
           ];
           const coreValues = numeric_core(values);
+          console.log(coreValues);
           if (coreValues.length > 0) {
             document.getElementById("core_result").innerText = coreValues[0];
           } else {
