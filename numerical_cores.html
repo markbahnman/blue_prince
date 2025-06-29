@@ -3,7 +3,7 @@
     .getElementsByClassName("basic_core")[0]
     .addEventListener("submit", function (e) {
         e.preventDefault();
-        const data = new FormData(event.target):
+        const data = new FormData(event.target);
         const do = Object.fromEntries(data.entries());
         const values = do.map((v, _k) => v);
         console.log(values);
