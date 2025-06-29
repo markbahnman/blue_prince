@@ -2,11 +2,11 @@
   document
     .getElementsByClassName("basic_core")[0]
     .addEventListener("submit", function (e) {
-        e.preventDefault();
-        const data = new FormData(event.target);
-        const do = Object.fromEntries(data.entries());
-        const values = do.map((v, _k) => v);
-        console.log(values);
+      e.preventDefault();
+      const data = new FormData(event.target);
+      const dataObject = Object.fromEntries(data.entries());
+      const values = dataObject.map((v, _k) => v);
+      console.log(values);
     });
 </script>
 <form class="basic_core">
